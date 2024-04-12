@@ -1,4 +1,11 @@
 
+function FoodItem(name, price, quantity){
+    this.name=name;
+    this.price=price;
+    this.quantity=quantity;
+}
+
+let foodarray = new Array();
 
 const burgerbtn= document.querySelector("#burgerbtn");
 const burgermenu = document.querySelector("#burgermenu");
@@ -60,7 +67,9 @@ cheeseburgerbtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    const burger1 = new FoodItem("The Amazing Cheeseburger",14.99,quantity);
+    foodarray.push(burger1);
+    displayFood();
 });
 
 joebtn.addEventListener('click', () => {
@@ -73,7 +82,9 @@ joebtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    const sloppyjoe1 = new FoodItem("The Joe",10.99,quantity);
+    foodarray.push(sloppyjoe1);
+    displayFood();
 });
 
 farmercharmbtn.addEventListener('click', () => {
@@ -86,7 +97,9 @@ farmercharmbtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    const farmercharmer1 = new FoodItem("Farmer Charmer",13.99,quantity);
+    foodarray.push(farmercharmer1);
+    displayFood();
 });
 
 pizzabtn.addEventListener('click', () => {
@@ -244,6 +257,19 @@ burgerbtn.addEventListener('click', () => {
         burgermenu.style.display = "none";
     }
 });
+
+function displayFood() {
+    for(let i=0; i < foodarray.length(); i++) {
+        item=foodarray[i].name;
+        price=foodarray[i].price;
+        quant=foodarray[i].quantity;
+        itemString="Item: " +item;
+        priceString="Price: $" +price;
+        quantString="Quantity: " +quant;
+        fullString= itemString + priceString + quantString;
+        document.querySelector("#foodcart").textContent+= fullString;
+    }
+}
 
 
 document.addEventListener('DOMContentLoaded',()=>{
