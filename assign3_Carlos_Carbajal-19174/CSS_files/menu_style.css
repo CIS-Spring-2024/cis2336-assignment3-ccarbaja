@@ -149,6 +149,10 @@ a {
     padding:10px 10px;
     font-size:18px;
 }
+.menuitem:hover{
+        cursor:pointer;
+        transform:scale(1.05);
+}
 
 .menudisplay {
     display:none;
@@ -164,6 +168,7 @@ a {
     width:100%;
     height:290px;
     object-fit:contain;
+    border:5px dashed #D03731;
 }
 
 .currentmenu summary {

@@ -29,7 +29,11 @@ const alfredobtn = document.querySelector("#alfredobtn");
 const lasagnabtn = document.querySelector("#lasagnabtn");
 const spaghettibtn = document.querySelector("#spaghettibtn");
 
-/*const burritoquantity = document.querySelector("#burritoquantity");*/
+var cheeseborderquant=0, farmercharmorderquant=0, sloppyjoeorderquant=0, chickwafforderquant=0, 
+burritoorderquant=0, omeletteorderquant=0, pizzaorderquant=0, tofuorderquant=0, saladorderquant=0,
+ alfredoorderquant=0, lasagnaorderquant=0, spaghettiorderquant = 0;
+
+const burritoquantity = document.querySelector("#burritoquantity");
 const omelettequantity = document.querySelector("#omelettequantity");
 const chickenwafflesquantity = document.querySelector("#chickenwafflesquantity");
 const saladquantity = document.querySelector("#saladquantity");
@@ -61,30 +65,28 @@ cheeseburgerbtn.addEventListener('click', () => {
     showfoodform();
     const cheeseburgerquantity = document.querySelector("#cheeseburgerquantity");
     quantity = cheeseburgerquantity.value;
+    cheeseborderquant+=quantity;
     tax+=((quantity * 14.99)* .0625);
     orderTotal+=(quantity * 14.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-    const burger1 = new FoodItem("The Amazing Cheeseburger",14.99,quantity);
-    foodarray.push(burger1);
-    displayFood();
+    displayFood(cheeseborderquant, "Amazing Cheeseburger $14.99");
 });
 
 joebtn.addEventListener('click', () => {
     showfoodform();
     const joequantity = document.querySelector("#joequantity");
     quantity = joequantity.value;
+    sloppyjoeorderquant+=quantity;
     tax+=((quantity * 10.99)* .0625);
     orderTotal+=(quantity * 10.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-    const sloppyjoe1 = new FoodItem("The Joe",10.99,quantity);
-    foodarray.push(sloppyjoe1);
-    displayFood();
+    displayFood(sloppyjoeorderquant, "The Joe $10.99");
 });
 
 farmercharmbtn.addEventListener('click', () => {
@@ -213,6 +215,10 @@ veganbtn.addEventListener('click', () => {
         burgermenu.style.display ="none";
         breakfastmenu.style.display ="none";
         pastamenu.style.display ="none";
+        document.getElementById("burgerbtn").style.textDecoration="none";
+        document.getElementById("veganbtn").style.textDecoration="underline";
+        document.getElementById("pastabtn").style.textDecoration="none";
+        document.getElementById("breakfastbtn").style.textDecoration="none";
     }
     else {
         veganmenu.style.display = "none";
@@ -226,6 +232,10 @@ pastabtn.addEventListener('click', () => {
         burgermenu.style.display ="none";
         breakfastmenu.style.display ="none";
         veganmenu.style.display ="none";
+        document.getElementById("burgerbtn").style.textDecoration="none";
+        document.getElementById("veganbtn").style.textDecoration="none";
+        document.getElementById("pastabtn").style.textDecoration="underline";
+        document.getElementById("breakfastbtn").style.textDecoration="none";
     }
     else {
         pastamenu.style.display = "none";
@@ -239,6 +249,10 @@ breakfastbtn.addEventListener('click', () => {
         burgermenu.style.display ="none";
         breakfastmenu.style.display ="grid";
         pastamenu.style.display ="none";
+        document.getElementById("breakfastbtn").style.textDecoration="underline";
+        document.getElementById("burgerbtn").style.textDecoration="none";
+        document.getElementById("veganbtn").style.textDecoration="none";
+        document.getElementById("pastabtn").style.textDecoration="none";
     }
     else {
         breakfastmenu.style.display = "none";
@@ -252,30 +266,31 @@ burgerbtn.addEventListener('click', () => {
         veganmenu.style.display ="none";
         breakfastmenu.style.display ="none";
         pastamenu.style.display ="none";
+        document.getElementById("veganbtn").style.textDecoration="none";
+        document.getElementById("pastabtn").style.textDecoration="none";
+        document.getElementById("breakfastbtn").style.textDecoration="none";
+        document.getElementById("burgerbtn").style.textDecoration="underline";
     }
     else {
-        burgermenu.style.display = "none";
+        burgermenu.style.display = "grid";
     }
 });
 
-function displayFood() {
-    for(let i=0; i < foodarray.length(); i++) {
-        item=foodarray[i].name;
-        price=foodarray[i].price;
-        quant=foodarray[i].quantity;
-        itemString="Item: " +item;
-        priceString="Price: $" +price;
-        quantString="Quantity: " +quant;
-        fullString= itemString + priceString + quantString;
-        document.querySelector("#foodcart").textContent+= fullString;
-    }
+
+function displayFood(foodquantity, foodstring) {
+        const outputString = "(" + foodquantity + ") " + foodstring;
+        document.getElementById("itemsInCart").innerHTML+= outputString;
 }
 
 
 document.addEventListener('DOMContentLoaded',()=>{
     console.log("content loaded");
     veganmenu.style.display ="none";
-    burgermenu.style.display ="none";
+    burgermenu.style.display ="grid";
     breakfastmenu.style.display ="none";
     pastamenu.style.display ="none";
+    document.getElementById("burgerbtn").style.textDecoration="underline";
+    document.getElementById("veganbtn").style.textDecoration="none";
+    document.getElementById("pastabtn").style.textDecoration="none";
+    document.getElementById("breakfastbtn").style.textDecoration="none";
 });
