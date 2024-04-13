@@ -52,73 +52,71 @@ let taxTotal=0;
 
 const foodformdisplay = document.querySelector(".checkoutcontainer");
 
-function showfoodform(){
-    if (foodformdisplay.style.display==="none"){
-        foodformdisplay.style.display="block";
+function checkQuantity(quantity, eleid){
+    if(quantity==0){
+        document.getElementById(eleid).remove();
     }
-    else {
-        foodformdisplay.style.display="block";
-    }
-};
+}
 
 cheeseburgerbtn.addEventListener('click', () => {
-    showfoodform();
-    const cheeseburgerquantity = document.querySelector("#cheeseburgerquantity");
-    quantity = cheeseburgerquantity.value;
-    cheeseborderquant+=quantity;
+    var cheeseburgerquantity = document.querySelector("#burgerquantity");
+    var quantity = cheeseburgerquantity.value;
+    console.log(1);
+    cheeseborderquant= cheeseborderquant + Number(quantity);
+    console.log(1);
     tax+=((quantity * 14.99)* .0625);
     orderTotal+=(quantity * 14.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
+    console.log(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-    displayFood(cheeseborderquant, "Amazing Cheeseburger $14.99");
+    displayFood(cheeseborderquant, "Amazing Cheeseburger $14.99","itemsInCart1");
+    console.log(3);
 });
 
 joebtn.addEventListener('click', () => {
-    showfoodform();
-    const joequantity = document.querySelector("#joequantity");
-    quantity = joequantity.value;
-    sloppyjoeorderquant+=quantity;
+    var joequantity = document.querySelector("#joequantity");
+    var quantity = joequantity.value;
+    sloppyjoeorderquant = sloppyjoeorderquant + Number(quantity);
     tax+=((quantity * 10.99)* .0625);
     orderTotal+=(quantity * 10.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-    displayFood(sloppyjoeorderquant, "The Joe $10.99");
+    displayFood(sloppyjoeorderquant, "The Joe $10.99","itemsInCart2");
 });
 
+
+
 farmercharmbtn.addEventListener('click', () => {
-    showfoodform();
-    const farmercharmquantity = document.querySelector("#farmercharmquantity");
-    quantity = farmercharmquantity.value;
+    var farmercharmquantity = document.querySelector("#farmercharmquantity");
+    var quantity = farmercharmquantity.value;
+    farmercharmorderquant+=Number(quantity);
     tax+=((quantity * 13.99)* .0625);
     orderTotal+=(quantity * 13.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-    const farmercharmer1 = new FoodItem("Farmer Charmer",13.99,quantity);
-    foodarray.push(farmercharmer1);
-    displayFood();
+    displayFood(farmercharmorderquant, "Farmer Charmer $13.99","itemsInCart3");
 });
 
 pizzabtn.addEventListener('click', () => {
-    showfoodform();
-    const pizzaquantity = document.querySelector("#pizzaquantity");
-    quantity = pizzaquantity.value;
+    var pizzaquantity = document.querySelector("#pizzaquantity");
+    var quantity = pizzaquantity.value;
+    pizzaorderquant+= Number(quantity);
     tax+=((quantity * 14.99)* .0625);
     orderTotal+=(quantity * 14.99)+ tax;
     taxTotal= "Tax: $" + tax.toFixed(2);
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    displayFood(pizzaorderquant, "Farmer Charmer $13.99","itemsInCart3");
 });
 
 tofubtn.addEventListener('click', () => {
-    showfoodform();
     const tofuquantity = document.querySelector("#tofuquantity");
     quantity = tofuquantity.value;
     tax+=((quantity * 11.79)* .0625);
@@ -127,11 +125,10 @@ tofubtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    foodformdisplay.style.display="block";
 });
 
 saladbtn.addEventListener('click', () => {
-    showfoodform();
     const saladquantity = document.querySelector("#saladquantity");
     quantity = saladquantity.value;
     tax+=((quantity * 9.50)* .0625);
@@ -140,11 +137,10 @@ saladbtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    foodformdisplay.style.display="block";
 });
 
 alfredobtn.addEventListener('click', () => {
-    showfoodform();
     const alfredoquantity = document.querySelector("#alfredoquantity");
     quantity = alfredoquantity.value;
     tax+=((quantity * 12.99)* .0625);
@@ -153,11 +149,10 @@ alfredobtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    foodformdisplay.style.display="block";
 });
 
 spaghettibtn.addEventListener('click', () => {
-    showfoodform();
     const spaghettiquantity = document.querySelector("#spaghettiquantity");
     quantity = spaghettiquantity.value;
     tax+=((quantity * 12.99)* .0625);
@@ -166,11 +161,10 @@ spaghettibtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    foodformdisplay.style.display="block";
 });
 
 burritobtn.addEventListener('click', () => {
-    showfoodform();
     const burritoquantity = document.querySelector("#burritoquantity");
     quantity = burritoquantity.value;
     tax+=((quantity * 8.99)* .0625);
@@ -179,11 +173,10 @@ burritobtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal; 
     document.querySelector("#taxtotal").textContent=taxTotal;
-
+    foodformdisplay.style.display="block";
 });
 
 omelettebtn.addEventListener('click', () => {
-    showfoodform();
     const omelettequantity = document.querySelector("#omelettequantity");
     quantity = omelettequantity.value;
     tax+=((quantity * 8.99)* .0625);
@@ -192,11 +185,10 @@ omelettebtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal;
     document.querySelector("#taxtotal").textContent=taxTotal; 
-
+    foodformdisplay.style.display="block";
 });
 
 chickenwafflesbtn.addEventListener('click', () => {
-    showfoodform();
     const chickenwafflesquantity = document.querySelector("#chickenwafflesquantity");
     quantity = chickenwafflesquantity.value;
     tax+=((quantity * 8.99)* .0625);
@@ -205,7 +197,7 @@ chickenwafflesbtn.addEventListener('click', () => {
     newTotal = "Total: $" + orderTotal.toFixed(2);
     document.querySelector("#ordertotal").textContent=newTotal;
     document.querySelector("#taxtotal").textContent=taxTotal; 
-
+    foodformdisplay.style.display="block";
 });
 
 veganbtn.addEventListener('click', () => {
@@ -277,9 +269,11 @@ burgerbtn.addEventListener('click', () => {
 });
 
 
-function displayFood(foodquantity, foodstring) {
-        const outputString = "(" + foodquantity + ") " + foodstring;
-        document.getElementById("itemsInCart").innerHTML+= outputString;
+function displayFood(foodquantity, foodstring, itemsCart) {
+        var outputString = "(" + foodquantity + ") " + foodstring;
+        document.getElementById(itemsCart).innerHTML = outputString;
+        document.getElementById(itemsCart).style.display="block";
+        foodformdisplay.style.display="block";
 }
 
 
