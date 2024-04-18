@@ -224,9 +224,16 @@ a {
 }
 
 #submitbtn {
-    font-size: 20px;
-    background-color: black;
+    font-size: 30px;
+    background-color:#D03731;
     color:white;
+    padding-left:2px;
+    padding-right:2px;
+    block-size: 45px;
+}
+
+.forminput:invalid {
+    border: 2px solid red;
 }
 
 .forminput {

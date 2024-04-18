@@ -213,7 +213,7 @@
             <div class="currentmenu">
                 <img src="../images/vegan_tofurice.jpg">
                 <details>
-                    <summary><strong> Rice with Broccoli <span class="prices">$11.79</span></strong></summary>
+                    <summary><strong> Tofu Rice with Broccoli <span class="prices">$11.79</span></strong></summary>
                     <p>This fan favorite tofu dish comes with delicious rice and steamed broccoli.
                         *comes with your choice of dip.</p>
                 </details>
@@ -293,28 +293,28 @@
                 </section>
                 <hr>
                 <section class="checkoutcontainer">
-<form class="foodform">
+<form id="foodsubmitform" class="foodform">
     <div class="forminput">
-        <h2>Contact Info:</h2>
+        <h2>Order Contact Info:</h2>
         <label for="fname">First Name:</label>
-        <input type="text" id="fname" name="fname" placeholder="First Name">
+        <input type="text" id="fname" name="fname" placeholder="First Name" maxlength="20" minlength="1" autocapitalize="words">
         <br>
         <label for="lname">Last Name:</label>
-        <input type="text" id="lname" name="lname" placeholder="Last Name">
+        <input type="text" id="lname" name="lname" placeholder="Last Name" maxlength="25" minlength="1" autocapitalize="words">
     </div>
     <div class="forminput">
         <label for="email">Email:</label>
-        <input type="text" id="email" name="email" placeholder="youremailhere@email.com">
+        <input type="email" id="email" name="email" placeholder="example@email.com">
     </div>
     <div class="forminput">
         <label for="phonenum">Phone Number:</label>
-        <input type="text" id="phonenum" name="phonenum" placeholder="(***) ***-****">
+        <input type="tel" id="phonenum" name="phonenum" placeholder="***-***-****" minlength="10" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
     </div>
     <div class="forminput">
         <p style="text-align: center;">Select a payment method:</p>
         <input type="radio" id="debitcard" name="payment" value="card">
         <label for="debitcard">Debit/Credit Card</label>
-        <input type="radio" id="cash" name="payment" value="cash">
+        <input type="radio" id="cash" name="payment" value="cash" checked="checked">
         <label for="cash">Cash at pickup</label>
     </div>
     <input type="submit" value="Submit" id="submitbtn">
@@ -339,7 +339,6 @@
             <li id="itemsInCart12" style="display:none;"></li>
         </ul>
         <li id="taxtotal">Tax: $0.00</li>
-        <li id="tiptotal">Tip: $0.00</li>
         <li id="ordertotal">Total: $0.00</li>
     </ul>
 </div>
